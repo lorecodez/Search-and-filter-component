@@ -20,7 +20,7 @@ export const data = [
     {
         id: 3,
         name: 'orange',
-        createdAt: new Date(date.getDate() + 1),
+        createdAt: new Date(date.getDate() + 2),
         price: 1.50,
         color: 'orange',
         category: ['fruit', 'citrus', 'organic']
@@ -28,7 +28,7 @@ export const data = [
     {
         id: 4,
         name: 'lemon',
-        createdAt: new Date(date.getDate() + 1),
+        createdAt: new Date(date.getDate() + 5),
         price: .50,
         color: 'yellow',
         category: ['fruit', 'citrus', 'sale']
@@ -36,7 +36,7 @@ export const data = [
     {
         id: 5,
         name: 'lime',
-        createdAt: new Date(date.getDate() + 1),
+        createdAt: new Date(date.getDate() + 3),
         price: .25,
         color: 'green',
         category: ['fruit', 'citrus', 'tropical']
@@ -60,7 +60,7 @@ export const data = [
     {
         id: 8,
         name: 'cabbage',
-        createdAt: new Date(date.getDate() + 1),
+        createdAt: new Date(date.getDate() + 5),
         price: 2.00,
         color: 'green',
         category: ['vegetable', 'sale']
