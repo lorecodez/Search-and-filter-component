@@ -20,12 +20,12 @@ export default function List({ data }: Props) {
 
     const [id, setId] = useState<string | undefined>(undefined);
     const [minDate, setMinDate] = useState<Date | undefined>(undefined);
-    const [maxDate, setMaxDate] = useState<Date| undefined>(undefined);
+    const [maxDate, setMaxDate] = useState<Date | undefined>(undefined);
     const [name, setName] = useState<string | undefined>(undefined);
     const [minPrice, setMinPrice] = useState<number | undefined>(undefined);
     const [maxPrice, setMaxPrice] = useState<number | undefined>(undefined);
     const [color, setColor] = useState<string | undefined>(undefined);
-    const [categories, setCategories] = useState<string[] | undefined>(undefined)
+    const [categories, setCategories] = useState<string[]>([])
     
   return (
     <div>
@@ -36,6 +36,7 @@ export default function List({ data }: Props) {
             <form>
                 <input
                 title='Name'
+                name='name'
                 value={name}
                 type="text"
                 placeholder='Item Name'
@@ -43,6 +44,7 @@ export default function List({ data }: Props) {
                 />
                 <input
                 title='Id'
+                name='id'
                 value={id}
                 type="number"
                 placeholder='Item Id'
@@ -50,6 +52,7 @@ export default function List({ data }: Props) {
                 />
                 <input
                 title='Minimum Date'
+                name='minDate'
                 value={minDate?.toDateString()}
                 type='date'
                 onChange={(e) => {
@@ -63,6 +66,7 @@ export default function List({ data }: Props) {
                 />
                 <input
                 title='Maximum Date'
+                name='maxDate'
                 value={maxDate?.toDateString()}
                 type='date'
                 onChange={(e) => {
@@ -76,6 +80,7 @@ export default function List({ data }: Props) {
                 />
                 <input
                 title='Minimun Price'
+                name='minPrice'
                 value={minPrice}
                 type='number'
                 onChange={(e) => setMinPrice(e.target.valueAsNumber)}
@@ -83,6 +88,7 @@ export default function List({ data }: Props) {
                 />
                 <input
                 title='Maximun Price'
+                name='maxPrice'
                 value={maxPrice}
                 type='number'
                 onChange={(e) => setMaxPrice(e.target.valueAsNumber)}
@@ -90,6 +96,7 @@ export default function List({ data }: Props) {
                 />
                 <input
                 title='Color'
+                name='color'
                 value={color}
                 list='colors'
                 />
@@ -101,7 +108,46 @@ export default function List({ data }: Props) {
                     <option value="brown"/>
                 </datalist>
                 <div>
-                    <label>Categories</label>
+                    <h3>Categories</h3>
+                   <div>
+                   <input
+                    id='fruit'
+                    title='Fruit'
+                    name='fruit'
+                    value={'fruit'}
+                    type='radio'
+                    checked={ categories.includes('fruit') }
+                    onChange={()=> setCategories([...categories, 'fruit'])}
+                    />
+                    <label htmlFor='fruit'>fruit</label>
+                    <input
+                    id='sale'
+                    title='Sale'
+                    name='sale'
+                    value={'sale'}
+                    type='radio'
+                    checked={ categories.includes('sale') }
+                    onChange={() => setCategories([...categories, 'sale'])}
+                    />
+                    <label htmlFor='sale'>sale</label>
+                    <input 
+                    type="radio" 
+                    name="citrus" 
+                    id="citrus"
+                    value={'citrus'} 
+                    checked={ categories.includes('cirtus')}
+                    onChange={() => setCategories([...categories, 'citrus'])}
+                    />
+                    <label htmlFor="citrus">Citrus</label>
+                    <input 
+                    type="raido" 
+                    name="organic" 
+                    id="organic"
+                    value={'organic'}
+                    checked={ categories.includes('organic')}
+                    onChange={() => setCategories([...categories, 'organic'])} 
+                    />
+                   </div>
                 </div>
             </form>
         </details>
