@@ -1,3 +1,4 @@
+'use client'
 import React, { useState } from 'react';
 
 
@@ -99,6 +100,7 @@ export default function List({ data }: Props) {
                 name='color'
                 value={color}
                 list='colors'
+                onChange={(e) => setColor(e.target.value)}
                 />
                 <datalist id='colors'>
                     <option value="yellow"/>
@@ -117,7 +119,13 @@ export default function List({ data }: Props) {
                     value={'fruit'}
                     type='radio'
                     checked={ categories.includes('fruit') }
-                    onChange={()=> setCategories([...categories, 'fruit'])}
+                    onClick={() => {
+                        if( categories.includes('fruit') ){
+                            setCategories(categories.filter(item => item != 'fruit'))
+                        } else {
+                            setCategories([...categories, 'fruit'])
+                        }
+                    }}
                     />
                     <label htmlFor='fruit'>fruit</label>
                     <input
@@ -127,7 +135,13 @@ export default function List({ data }: Props) {
                     value={'sale'}
                     type='radio'
                     checked={ categories.includes('sale') }
-                    onChange={() => setCategories([...categories, 'sale'])}
+                    onClick={() => {
+                        if( categories.includes('sale') ){
+                            setCategories(categories.filter(item => item != 'sale'))
+                        } else {
+                            setCategories([...categories, 'sale'])
+                        }
+                    }}
                     />
                     <label htmlFor='sale'>sale</label>
                     <input 
@@ -136,28 +150,46 @@ export default function List({ data }: Props) {
                     id="citrus"
                     title='Citrus'
                     value={'citrus'} 
-                    checked={ categories.includes('cirtus')}
-                    onChange={() => setCategories([...categories, 'citrus'])}
+                    checked={ categories.includes('citrus')}
+                    onClick={() => {
+                        if( categories.includes('citrus') ){
+                            setCategories(categories.filter(item => item != 'citrus'))
+                        } else {
+                            setCategories([...categories, 'citrus'])
+                        }
+                    }}
                     />
                     <label htmlFor="citrus">Citrus</label>
                     <input 
-                    type="raido" 
+                    type="radio" 
                     name="organic" 
                     id="organic"
                     title='Organic'
                     value={'organic'}
                     checked={ categories.includes('organic')}
-                    onChange={() => setCategories([...categories, 'organic'])} 
+                    onClick={() => {
+                        if( categories.includes('organic') ){
+                            setCategories(categories.filter(item => item != 'organic'))
+                        } else {
+                            setCategories([...categories, 'organic'])
+                        }
+                    }}
                     />
                     <label htmlFor="organic">Organic</label>
                     <input 
-                    type="raido"
+                    type="radio"
                     name='tropical'
                     id='tropical'
                     title='Tropical'
                     value={'tropical'}
                     checked={ categories.includes('tropical')}
-                    onChange={() => setCategories([...categories, 'tropical'])}
+                    onClick={() => {
+                        if( categories.includes('tropical') ){
+                            setCategories(categories.filter(item => item != 'tropical'))
+                        } else {
+                            setCategories([...categories, 'tropical'])
+                        }
+                    }}
                     />
                     <label htmlFor="tropical">Tropical</label>
                     <input 
@@ -167,14 +199,29 @@ export default function List({ data }: Props) {
                     title='Vegtable'
                     value={'vegtable'}
                     checked={ categories.includes('vegtable') }
-                    onChange={() => setCategories([...categories, 'vegtable'])}
+                    onClick={() => {
+                        if( categories.includes('vegtable') ){
+                            setCategories(categories.filter(item => item != 'vegtable'))
+                        } else {
+                            setCategories([...categories, 'vegtable'])
+                        }
+                    }}
                     />
                    </div>
                 </div>
             </form>
         </details>
         <section>
-
+                <p>{name}</p>
+                <p>{id}</p>
+                <p>{minDate?.toLocaleDateString()}</p>
+                <p>{maxDate?.toLocaleDateString()}</p>
+                <p>{minPrice}</p>
+                <p>{maxPrice}</p>
+                <p>{color}</p>
+                <p>
+                    {categories.map((category) => category)}
+                </p>
         </section>
     </div>
   )
