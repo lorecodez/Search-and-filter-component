@@ -134,6 +134,7 @@ export default function List({ data }: Props) {
                     type="radio" 
                     name="citrus" 
                     id="citrus"
+                    title='Citrus'
                     value={'citrus'} 
                     checked={ categories.includes('cirtus')}
                     onChange={() => setCategories([...categories, 'citrus'])}
@@ -143,9 +144,30 @@ export default function List({ data }: Props) {
                     type="raido" 
                     name="organic" 
                     id="organic"
+                    title='Organic'
                     value={'organic'}
                     checked={ categories.includes('organic')}
                     onChange={() => setCategories([...categories, 'organic'])} 
+                    />
+                    <label htmlFor="organic">Organic</label>
+                    <input 
+                    type="raido"
+                    name='tropical'
+                    id='tropical'
+                    title='Tropical'
+                    value={'tropical'}
+                    checked={ categories.includes('tropical')}
+                    onChange={() => setCategories([...categories, 'tropical'])}
+                    />
+                    <label htmlFor="tropical">Tropical</label>
+                    <input 
+                    type="radio" 
+                    name="vegtable" 
+                    id="vegtable"
+                    title='Vegtable'
+                    value={'vegtable'}
+                    checked={ categories.includes('vegtable') }
+                    onChange={() => setCategories([...categories, 'vegtable'])}
                     />
                    </div>
                 </div>
