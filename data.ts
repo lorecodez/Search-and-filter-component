@@ -1,5 +1,7 @@
+//todays date
 const date = new Date()
 
+//dummy data to filter through
 export const data = [
     {
         id: 1,
