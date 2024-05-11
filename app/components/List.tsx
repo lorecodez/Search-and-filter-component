@@ -22,7 +22,7 @@ export default function List({ data }: Props) {
     const [filteredData, setFilterData] = useState<Item[]>(data)
 
     //creating states for filter params
-    const [id, setId] = useState<string | undefined>();
+    const [id, setId] = useState<number | undefined>();
     const [minDate, setMinDate] = useState<Date | undefined>();
     const [maxDate, setMaxDate] = useState<Date | undefined>();
     const [name, setName] = useState<string | undefined>();
@@ -37,10 +37,10 @@ export default function List({ data }: Props) {
         console.log('handleSearch')
 
         if(id){
-            setFilteredList({...filterList, id})
+            setFilterData(data.filter((item) => item.id == id))
             console.log('set id')
         } else if(name){
-            setFilteredList({...filterList, name})
+            setFilterData(data.filter((item) => item.name.toLowerCase().includes(name.toLowerCase())))
             console.log('set name')
         } else if(minDate){
             setFilteredList({...filterList, minDate})
@@ -62,15 +62,15 @@ export default function List({ data }: Props) {
 
         setFilterData(data.filter((item) => {
             console.log('filtering...')
-            for(var key in filterList){
-                if(item[key as keyof Item] === undefined || item[key as keyof Item] != filterList[key as keyof {}]){
-                    return false;
-                }
+            // for(var key in filterList){
+            //     if(item[key as keyof Item] === undefined || item[key as keyof Item] != filterList[key as keyof {}]){
+            //         return false;
+            //     }
 
-                console.log(item)
+            //     console.log(item)
                 
-                return true;
-            }
+            //     return true;
+            // }
         }));
 
     };
@@ -100,7 +100,7 @@ export default function List({ data }: Props) {
                 value={id}
                 type="number"
                 placeholder='Please enter an ID'
-                onChange={(e) => setId(e.target.value)} 
+                onChange={(e) => setId(e.target.valueAsNumber)} 
                 />
                 <label htmlFor="minDate">Min Date</label>
                 <input
