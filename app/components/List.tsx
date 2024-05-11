@@ -37,41 +37,43 @@ export default function List({ data }: Props) {
         console.log('handleSearch')
 
         if(id){
-            setFilterData(data.filter((item) => item.id == id))
+            setFilterData((prev) => prev.filter((item) => item.id == id))
             console.log('set id')
         } else if(name){
-            setFilterData(data.filter((item) => item.name.toLowerCase().includes(name.toLowerCase())))
+            setFilterData((prev) => prev.filter((item) => item.name.toLowerCase().includes(name.toLowerCase())))
             console.log('set name')
         } else if(minDate){
-            setFilteredList({...filterList, minDate})
+            setFilterData((prev) => prev.filter((item) => item.createdAt >= minDate))
             console.log('set date')
         } else if(maxDate){
-            // setFilteredList({...filterList, maxDate})
+            setFilterData((prev) => prev.filter((item) => item.createdAt <= maxDate))
         } else if(minPrice){
-            setFilteredList({...filterList, minPrice})
+            setFilterData((prev) => prev.filter((item) => item.price >= minPrice))
             console.log('set price')
         } else if(maxPrice){
-            //setFilteredList({...filterList, name})
+            setFilterData((prev) => prev.filter((item) => item.price <= maxPrice))
         } else if(color){
-            setFilteredList({...filterList, color})
+            setFilterData((prev) => prev.filter((item) => item.color == color))
             console.log('set color')
         } else if(categories.length > 0){
-            setFilteredList({...filterList, categories})
+            setFilterData((prev) => prev.filter((item) => item.category.some(cat => categories.includes(cat))))
             console.log('set categories')
         }
 
-        setFilterData(data.filter((item) => {
-            console.log('filtering...')
-            // for(var key in filterList){
-            //     if(item[key as keyof Item] === undefined || item[key as keyof Item] != filterList[key as keyof {}]){
-            //         return false;
-            //     }
+        console.log('filtering...')
 
-            //     console.log(item)
+        // setFilterData(data.filter((item) => {
+            
+        //     for(var key in filterList){
+        //         if(item[key as keyof Item] === undefined || item[key as keyof Item] != filterList[key as keyof {}]){
+        //             return false;
+        //         }
+
+        //         console.log(item)
                 
-            //     return true;
-            // }
-        }));
+        //         return true;
+        //     }
+        // }));
 
     };
     
