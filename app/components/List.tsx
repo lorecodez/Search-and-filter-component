@@ -33,8 +33,12 @@ export default function List({ data }: Props) {
     //applies filters to data 
     const handleSearch = () => {
 
-        console.log('handleSearch')
+        console.log('handleSearch');
 
+        //reset date before applying filters
+        setFilterData(data);
+
+        //checking to see if a filter is selected and if so running the data through it 
         if(id){
             setFilterData((prev) => prev.filter((item) => item.id == id))
             console.log('set id')
