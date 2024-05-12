@@ -17,8 +17,7 @@ type Props = {
 
 export default function List({ data }: Props) {
 
-    //creating list of filter params and filtered data array
-    const [filterList, setFilteredList] = useState<{}>({});
+    //creating filtered data array
     const [filteredData, setFilterData] = useState<Item[]>(data)
 
     //creating states for filter params
@@ -31,7 +30,7 @@ export default function List({ data }: Props) {
     const [color, setColor] = useState<string | undefined>();
     const [categories, setCategories] = useState<string[]>([])
 
-    //adding filters and searching function
+    //applies filters to data 
     const handleSearch = () => {
 
         console.log('handleSearch')
