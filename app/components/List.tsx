@@ -115,6 +115,7 @@ export default function List({ data }: Props) {
                 name='minDate'
                 value={minDate?.toDateString()}
                 type='date'
+                max={maxDate?.toDateString()}
                 onChange={(e) => {
                     if(!e.target.valueAsDate){
                         alert('Error, please select a date.');
@@ -130,6 +131,7 @@ export default function List({ data }: Props) {
                 title='Maximum Date'
                 name='maxDate'
                 value={maxDate?.toDateString()}
+                min={minDate?.toDateString()}
                 type='date'
                 onChange={(e) => {
                     if(!e.target.valueAsDate){
@@ -278,8 +280,14 @@ export default function List({ data }: Props) {
                    </div>
                 </div>
                 <button
+                title='Reset'
+                type='reset'
+                onClick={() => setFilterData(data)}
+                >
+                    Reset
+                </button>
+                <button
                 title='Search'
-                name='search'
                 type='button'
                 onClick={handleSearch}
                 className='rounded-2xl p-2 border border-black'
