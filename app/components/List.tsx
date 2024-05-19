@@ -40,28 +40,29 @@ export default function List({ data }: Props) {
 
         //checking to see if a filter is selected and if so running the data through it 
         if(id){
-            setFilterData((prev) => prev.filter((item) => item.id == id))
+            setFilterData((filteredData) => filteredData.filter((item) => item.id == id))
             console.log('set id')
         } else if(name){
-            setFilterData((prev) => prev.filter((item) => item.name.toLowerCase().includes(name.toLowerCase())))
+            setFilterData((filteredData) => filteredData.filter((item) => item.name.toLowerCase().includes(name.toLowerCase())))
             console.log('set name')
         } else if(minDate){
-            setFilterData((prev) => prev.filter((item) => item.createdAt >= minDate))
+            setFilterData((filteredData) => filteredData.filter((item) => item.createdAt >= minDate))
             console.log('set date')
         } else if(maxDate){
-            setFilterData((prev) => prev.filter((item) => item.createdAt <= maxDate))
+            setFilterData((filteredData) => filteredData.filter((item) => item.createdAt <= maxDate))
         } else if(minPrice){
-            setFilterData((prev) => prev.filter((item) => item.price >= minPrice))
+            setFilterData((filteredData) => filteredData.filter((item) => item.price >= minPrice))
             console.log('set price')
         } else if(maxPrice){
-            setFilterData((prev) => prev.filter((item) => item.price <= maxPrice))
+            setFilterData((filteredData) => filteredData.filter((item) => item.price <= maxPrice))
         } else if(color){
-            setFilterData((prev) => prev.filter((item) => item.color == color))
+            setFilterData((filteredData) => filteredData.filter((item) => item.color == color))
             console.log('set color')
         } else if(categories.length > 0){
-            setFilterData((prev) => prev.filter((item) => item.category.some(cat => categories.includes(cat))))
+            setFilterData((filteredData) => filteredData.filter((item) => item.category.some(cat => categories.includes(cat))))
             console.log('set categories')
         }
+
 
         console.log('filtering...')
 
